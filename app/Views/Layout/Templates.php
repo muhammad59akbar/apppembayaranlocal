@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Hello, world!</title>
+    <title><?= $title ?></title>
 </head>
 
 <body>
@@ -35,13 +35,7 @@
 
                 </div>
 
-
-
-
-
-
-
-                <h6 class="p-2 mt-1 font-weight-light">Logged as : <span class="font-weight-bold">tester</span></h6>
+                <h6 class="p-2 mt-1 font-weight-light">Logged as : <span class="font-weight-bold"><?= user()->nama_lengkap ?></span></h6>
             </div>
         </div>
     </nav>
@@ -50,15 +44,21 @@
 
         <ul class="nav flex-column mt-lg-0">
             <li class="nav-item mt-3 d-flex">
-                <a class=" d-flex align-items-center gap-3 text-white mx-2 text-decoration-none" href="">
+                <a class=" d-flex align-items-center gap-3 text-white mx-2 text-decoration-none" href="<?= base_url('/') ?>">
                     <i class="bi bi-speedometer fs-4 icon-list-nav"></i>
                     <span class="menuname-nav">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item mt-3 d-flex">
-                <a class=" d-flex align-items-center gap-3 text-white mx-2 text-decoration-none" href="">
+                <a class=" d-flex align-items-center gap-3 text-white mx-2 text-decoration-none" href="<?= base_url('/billing/Admin/DataUser') ?>">
                     <i class="bi bi-people fs-4 icon-list-nav"></i>
-                    <span class="menuname-nav">Customer</span>
+                    <span class="menuname-nav">User</span>
+                </a>
+            </li>
+            <li class="nav-item mt-3 d-flex">
+                <a class=" d-flex align-items-center gap-3 text-white mx-2 text-decoration-none" href="<?= base_url('billing/customer/List_Customer') ?>">
+                    <i class="<?= in_groups(['Admin', 'Direktur']) ? 'bi bi-people' : 'bi bi-backpack3' ?> fs-4 icon-list-nav"></i>
+                    <span class="menuname-nav"><?= in_groups(['Admin', 'Direktur']) ? 'Customer' : 'Data Pemasangan' ?></span>
                 </a>
             </li>
             <li class="nav-item mt-3 d-flex">
@@ -68,7 +68,7 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <a class=" text-white d-flex align-items-center gap-3 mx-2 text-decoration-none" href="">
+                <a class=" text-white d-flex align-items-center gap-3 mx-2 text-decoration-none" href="<?= base_url('logout') ?>">
                     <i class="bi bi-box-arrow-right fs-4 icon-list-nav"></i>
                     <span class="menuname-nav">Logout</span>
                 </a>
@@ -76,8 +76,9 @@
         </ul>
 
     </div>
-
-    <?= $this->renderSection('content'); ?>
+    <div class="main-content">
+        <?= $this->renderSection('content'); ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
