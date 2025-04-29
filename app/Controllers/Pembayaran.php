@@ -6,6 +6,10 @@ class Pembayaran extends BaseController
 {
     public function index(): string
     {
-        return view('Dashboard');
+        $data = [
+            'title' => 'Dashboard Jaringanku',
+
+        ];
+        return view('Member/Dashboard', $data);
     }
 }
